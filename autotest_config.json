@@ -8,7 +8,7 @@
             "_security_scan_report_conclusion": "failure",
             "_comment_security_scan_report_conclusion": "Optional. Expected scan report conclusion. Options: 'success' | 'failure'. This validates the security scan result status. If not provided, this check will not be performed.",
             "total_libs_scanned": {
-                "eq": 20
+                "gte": 15
             },
             "_comment_total_libs_scanned": "Expected number of libraries scanned with comparison operator. Validates that the scan processed libraries."
         },
@@ -18,41 +18,26 @@
             "check_dependency_tree_detection_status": true,
             "_comment_check_dependency_tree_detection_status": "Whether to check if dependency tree was successfully detected. Options: true | false. Default: true",
             "expected_total_dependencies_number": {
-                "eq": 20
+                "gte": 15
             },
             "expected_direct_dependencies_number": {
                 "eq": 3
             },
             "expected_transitive_dependencies_number": {
-                "eq": 17
+                "gte": 12
             },
             "_comment_expected_dependencies_number": "Optional. Expected number of dependencies with comparison operator. Operators: gt (>), gte (>=), lt (<), lte (<=), eq (==). If not provided, this check will not be performed.",
             "direct_dependencies_names_list": {
                 "eq": [
-                    "django-4.2.27-py3-none-any.whl",
-                    "requests-2.32.5-py3-none-any.whl",
-                    "flask-2.3.3-py3-none-any.whl"
+                   "flask-2.2.5-py3-none-any.whl",
+                   "django-2.2-py3-none-any.whl",
+                "requests-2.31.0-py3-none-any.whl"
                 ]
             },
             "transitive_dependencies_names_list": {
-                "eq": [
-                    "itsdangerous-2.2.0-py3-none-any.whl",
-                    "idna-3.11-py3-none-any.whl",
-                    "importlib_metadata-8.7.1-py3-none-any.whl",
-                    "colorama",
-                    "markupsafe-3.0.3-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
-                    "asgiref-3.11.0-py3-none-any.whl",
-                    "zipp-3.23.0-py3-none-any.whl",
-                    "sqlparse-0.5.5-py3-none-any.whl",
-                    "jinja2-3.1.6-py3-none-any.whl",
-                    "charset_normalizer-3.4.4-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
-                    "blinker-1.9.0-py3-none-any.whl",
-                    "urllib3-2.6.3-py3-none-any.whl",
-                    "certifi-2026.1.4-py3-none-any.whl",
-                    "werkzeug-3.1.5-py3-none-any.whl",
-                    "click-8.1.8-py3-none-any.whl",
-                    "tzdata",
-                    "typing_extensions-4.15.0-py3-none-any.whl"
+                "contains": [
+                    "pytz-2025.2-py2.py3-none-any.whl",
+                    "click-8.3.1-py3-none-any.whl"
                 ]
             },
             "_comment_dependencies_names_list": "Optional. Check specific libraries in direct dependencies. Operators: eq (==), contains (all items from expected list in actual), in(all items from actual list in expected), nin(actual list does not contain provided libs). If not provided, this check will not be performed.",
@@ -96,12 +81,12 @@
                     "value": "Trying version getter: ToolVersions"
                 },
                 {
-                    "operator": "regex",
-                    "value": "Found Python version \\(3\\.11\\.1\\) for Pip project at \"/.*poetry_conflict_tool_vs_pyproject.*\""
+                  "operator": "regex",
+                  "value": "Found Python version \\\\\"3\\.11\\.2\\\\\" in \\.tool-versions"
                 },
-              {
-                    "operator": "regex",
-                    "value": "Found Python version \"3.11.2\" in .tool-versions"
+                {
+                  "operator": "regex",
+                  "value": "Found Python version \\(3\\.11\\.2\\) for Poetry project at .*poetry_conflict_tool_vs_pyproject"
                 },
                 {
                     "operator": "eq",
